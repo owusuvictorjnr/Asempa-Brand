@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext, useEffect } from 'react';
 import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
@@ -74,7 +75,7 @@ export default function OrderPage() {
 
   const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
     style: { layout: 'vertical' },
-    createOrder(data, actions) {
+    createOrder(_data, actions) {
       return actions.order
         .create({
           purchase_units: [
@@ -92,7 +93,7 @@ export default function OrderPage() {
     },
 
 
-    onApprove(data, actions) {
+    onApprove(_data, actions) {
         
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return actions.order!.capture().then(async (details) => {  
