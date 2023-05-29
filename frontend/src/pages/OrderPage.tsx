@@ -23,8 +23,8 @@ import { getError } from '../utils';
 
 export default function OrderPage() {
   const { state } = useContext(Store);
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unused-vars
-  const { userInfo } = state;
+
+  const { userInfo} = state;
 
   const params = useParams();
   const { id: orderId } = params;
@@ -90,9 +90,12 @@ export default function OrderPage() {
           return orderID;
         });
     },
+
+
     onApprove(data, actions) {
+        
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return actions.order!.capture().then(async (details) => {
+      return actions.order!.capture().then(async (details) => {  
         try {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           await payOrder({ orderId: orderId!, ...details });
@@ -126,7 +129,7 @@ export default function OrderPage() {
             <Card.Body>
               <Card.Title>Shipping</Card.Title>
               <Card.Text>
-                <strong>Name: </strong> {order!.shippingAddress.fullName}
+                <strong>Name: </strong> {order.shippingAddress.fullName}
                 <br />
                 <strong>Address: </strong> {order.shippingAddress.address},
                 {order.shippingAddress.city}, {order.shippingAddress.postalCode}{' '}
