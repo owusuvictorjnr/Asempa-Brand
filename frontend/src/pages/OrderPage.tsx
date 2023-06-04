@@ -75,7 +75,7 @@ export default function OrderPage() {
 
   const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
     style: { layout: 'vertical' },
-    createOrder(_data, actions) {
+    createOrder(data, actions) {
       return actions.order
         .create({
           purchase_units: [
@@ -93,7 +93,7 @@ export default function OrderPage() {
     },
 
 
-    onApprove(_data, actions) {
+    onApprove(data, actions) {
         
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return actions.order!.capture().then(async (details) => {  
